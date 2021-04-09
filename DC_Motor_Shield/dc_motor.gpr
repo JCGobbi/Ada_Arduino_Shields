@@ -1,0 +1,32 @@
+with "../Ada_Drivers_Library/ada_drivers_library.gpr";
+
+project DC_Motor is
+
+   for Languages use ("Ada");
+   for Target use Ada_Drivers_Library'Target;
+   for Runtime ("ada") use Ada_Drivers_Library'Runtime ("Ada");
+   for Source_Dirs use ("src");
+
+   -- Executable files to choose:
+   -- dc_motor_demo.adb, dc_motor_task_demo.adb
+   for Main use ("dc_motor_demo.adb", "dc_motor_task_demo.adb");
+
+   for Object_Dir use "obj";
+   for Exec_Dir use "exec";
+   for Create_Missing_Dirs use "True";
+
+   package Compiler renames Ada_Drivers_Library.Compiler;
+
+   package Builder is
+      for Executable("dc_motor_demo.adb") use "dc_motor";
+      for Executable("dc_motor_task_demo.adb") use "dc_motor_task";
+      for Executable_Suffix use ".elf";
+   end Builder;
+
+   package Ide is
+      for Program_Host use "localhost:4242";
+      for Communication_Protocol use "remote";
+      for Connection_Tool use "st-util";
+   end Ide;
+
+end DC_Motor;

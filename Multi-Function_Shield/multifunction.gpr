@@ -1,0 +1,32 @@
+with "../Ada_Drivers_Library/ada_drivers_library.gpr";
+
+project Multifunction is
+
+   for Languages use ("Ada");
+   for Target use Ada_Drivers_Library'Target;
+   for Runtime ("ada") use Ada_Drivers_Library'Runtime ("Ada");
+   for Source_Dirs use ("src");
+
+   -- Executable files to choose:
+   -- multifunction_demo.adb, multifunction_task_demo.adb
+   for Main use ("multifunction_demo.adb", "multifunction_task_demo.adb");
+
+   for Object_Dir use "obj";
+   for Exec_Dir use "exec";
+   for Create_Missing_Dirs use "True";
+
+   package Compiler renames Ada_Drivers_Library.Compiler;
+
+   package Builder is
+      for Executable("multifunction_demo.adb") use "multifunction";
+      for Executable("multifunction_task_demo.adb") use "multifunction_task";
+      for Executable_Suffix use ".elf";
+   end Builder;
+
+   package Ide is
+      for Program_Host use "localhost:4242";
+      for Communication_Protocol use "remote";
+      for Connection_Tool use "st-util";
+   end Ide;
+
+end Multifunction;
