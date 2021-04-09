@@ -1,7 +1,6 @@
 with STM32.Board;     use STM32.Board;
 
 with DC_Motor_Shield; use DC_Motor_Shield;
-with Buzzer;          use Buzzer;
 
 package body DC_Motor_Task is
 

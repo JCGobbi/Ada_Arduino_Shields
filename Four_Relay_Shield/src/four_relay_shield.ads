@@ -23,8 +23,13 @@ package Four_Relay_Shield is
    Relay_Points : GPIO_Points := RL_1 & RL_2 & RL_3 & RL_4;
 
    procedure Relay_Init_Bus;
+
    procedure Relay_Set (This : in out GPIO_Point) renames STM32.GPIO.Set;
+   -- GPIO = 0 => relay OFF, GPIO = 1 => relay ON.
+
    Procedure Relay_Clear (This : in out GPIO_Point) renames STM32.GPIO.Clear;
+   -- GPIO = 0 => relay OFF, GPIO = 1 => relay ON.
+
    procedure Relay_Toggle (This : in out GPIO_Point) renames STM32.GPIO.Toggle;
 
 end Four_Relay_Shield;

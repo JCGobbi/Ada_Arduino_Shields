@@ -74,11 +74,19 @@ package DC_Motor_Shield is
 
    procedure Buzzer_Init_Bus;
 
-   -- The procedures bellow are extracted from STM32.Board (STM32F429disco)
-   -- and addressed to the NUCLEOF429ZI LEDs.
+   procedure Buzzer_Set (This : in out GPIO_Point) renames STM32.GPIO.Set;
+   -- GPIO = 0 => buzzer OFF, GPIO = 1 => buzzer ON.
+
+   Procedure Buzzer_Clear (This : in out GPIO_Point) renames STM32.GPIO.Clear;
+   -- GPIO = 0 => buzzer OFF, GPIO = 1 => buzzer ON.
+
+   Procedure Buzzer_Toggle (This : in out GPIO_Point) renames STM32.GPIO.Toggle;
+
    ---------------------------------
    -- Nucleo Board Configurations --
    ---------------------------------
+   -- The procedures bellow are extracted from STM32.Board (STM32F429disco)
+   -- and addressed to the NUCLEOF429ZI LEDs.
 
    Blue_LED  : GPIO_Point renames PB7;
    Green_LED : GPIO_Point renames PB0;

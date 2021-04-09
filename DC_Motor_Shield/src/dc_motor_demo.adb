@@ -1,6 +1,5 @@
 with Ada.Real_Time;   use Ada.Real_Time;
 
-with Buzzer;          use Buzzer;
 with DC_Motor;        use DC_Motor;
 with DC_Motor_Shield; use DC_Motor_Shield;
 

@@ -30,7 +30,7 @@ package body Button is
 
             if not SW1.Set then
                -- Put here your code for SW1 pressed
-               X_Pressed := not X_Pressed;
+               X_Pressed := not X_Pressed; -- Toggle
             end if;
 
             if not SW2.Set then

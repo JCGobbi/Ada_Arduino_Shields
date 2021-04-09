@@ -3,7 +3,6 @@ with Ada.Real_Time;        use Ada.Real_Time;
 
 with Multifunction_Shield; use Multifunction_Shield;
 with Seven_Seg;            use Seven_Seg;
-with LED_Buzzer;           use LED_Buzzer;
 with Button;               use Button;
 with Potentiometer;        use Potentiometer;
 
