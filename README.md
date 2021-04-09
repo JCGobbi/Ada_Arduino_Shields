@@ -1,6 +1,6 @@
 # Ada Arduino Shields
 
-This repository contains Ada softmware to play with four Arduino shields:
+This repository contains Ada software to play with four Arduino shields:
 - Four Relay Shield;
 - Multi-function Shield;
 - LCD 1602 Keypad Shield;
