@@ -2,7 +2,7 @@
 
 This repository contains Ada software to play with four Arduino shields:
 - Four Relay Shield;
-- Multi-function Shield;
+- Multifunction Shield;
 - LCD 1602 Keypad Shield;
 - DC Motor Shield.
 
