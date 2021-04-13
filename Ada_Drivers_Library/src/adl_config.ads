@@ -11,9 +11,9 @@ package ADL_Config is
    Has_ZFP_Runtime                : constant String  := "False";             -- From board definition
    Has_Ravenscar_SFP_Runtime      : constant String  := "True";              -- From board definition
    Has_Ravenscar_Full_Runtime     : constant String  := "True";              -- From board definition
-   Runtime_Profile                : constant String  := "ravenscar-full";    -- From user input
+   Runtime_Profile                : constant String  := "ravenscar-sfp";    -- From user input
    Runtime_Name_Suffix            : constant String  := "stm32f429disco";    -- From board definition
-   Runtime_Name                   : constant String  := "ravenscar-full-stm32f429disco"; -- From user input
+   Runtime_Name                   : constant String  := "ravenscar-sfp-stm32f429disco"; -- From user input
    Use_Startup_Gen                : constant Boolean := False;               -- From user input
    Max_Path_Length                : constant         := 1024;                -- From user input
    Max_Mount_Points               : constant         := 2;                   -- From user input
