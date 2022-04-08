@@ -8,7 +8,7 @@ package body LCD is
    ----------------
 
    procedure Wait_Until (S : Time_Span) is
-      T : Constant Time := Clock + S;
+      T : constant Time := Clock + S;
    begin
       while Clock < T loop
          null;
@@ -22,9 +22,9 @@ package body LCD is
    procedure LCD_Lo (Mask : Byte) is
       c8 : Bits_8 with Size => 8;
    begin
-      c8 := B8_From_B(Mask);
+      c8 := B8_From_B (Mask);
       for i in LCD_Data'Range loop
-         Drive (LCD_Data(i), Condition => c8(i));
+         Drive (LCD_Data (i), Condition => c8 (i));
       end loop;
    end LCD_Lo;
 
@@ -33,11 +33,11 @@ package body LCD is
    ------------
 
    procedure LCD_Hi (Mask : Byte) is
-      c8       : Bits_8 with Size => 8;
+      c8 : Bits_8 with Size => 8;
    begin
-      c8 := B8_From_B(Mask);
+      c8 := B8_From_B (Mask);
       for i in LCD_Data'Range loop
-         Drive (LCD_Data(i), Condition => c8(i + 4));
+         Drive (LCD_Data (i), Condition => c8 (i + 4));
       end loop;
    end LCD_Hi;
 
@@ -45,12 +45,12 @@ package body LCD is
    -- LCD_Strobe --
    ----------------
 
-   procedure LCD_strobe is
+   procedure LCD_Strobe is
    begin
       LCD_E.Set;
-      Wait_Until(Nanoseconds(500));
+      Wait_Until (Nanoseconds (500));
       LCD_E.Clear;
-   end LCD_strobe;
+   end LCD_Strobe;
 
    -----------------------
    -- LCD_Write_4x2Bits --
@@ -58,10 +58,10 @@ package body LCD is
 
    procedure LCD_Write_4x2Bits (C : Character) is
    begin
-      Wait_Until(Microseconds(50));
-      LCD_Hi(Character'Pos(C)); -- The ASCII byte address of the character
+      Wait_Until (Microseconds (50));
+      LCD_Hi (Character'Pos (C)); -- The ASCII byte address of the character
       LCD_Strobe;
-      LCD_Lo(Character'Pos(C));
+      LCD_Lo (Character'Pos (C));
       LCD_Strobe;
    end LCD_Write_4x2Bits;
 
@@ -71,10 +71,10 @@ package body LCD is
 
    procedure LCD_Write_4x2Bits (D : Byte) is
    begin
-      Wait_Until(Microseconds(50));
-      LCD_Hi(D);
+      Wait_Until (Microseconds (50));
+      LCD_Hi (D);
       LCD_Strobe;
-      LCD_Lo(D);
+      LCD_Lo (D);
       LCD_Strobe;
    end LCD_Write_4x2Bits;
 
@@ -84,7 +84,7 @@ package body LCD is
 
    procedure LCD_Write_4x1Bits (D : Byte) is
    begin
-      LCD_Hi(D);
+      LCD_Hi (D);
       LCD_Strobe;
    end LCD_Write_4x1Bits;
 
@@ -95,7 +95,7 @@ package body LCD is
    procedure LCD_Cmd (Cmd : Byte) is
    begin
       LCD_RS.Clear;
-      LCD_Write_4x2Bits(Cmd);
+      LCD_Write_4x2Bits (Cmd);
    end LCD_Cmd;
 
    --------------
@@ -105,27 +105,27 @@ package body LCD is
    procedure LCD_Init is
    begin
       LCD_E.Clear;
-      --LCD_RW.Clear;
+      --  LCD_RW.Clear;
       LCD_RS.Clear;
 
       LCD_BKLT.Set;
 
-      Wait_Until(Milliseconds(20));
-      LCD_Write_4x1Bits(DISP_INIT);
-      Wait_Until(Milliseconds(5));
-      LCD_Write_4x1Bits(DISP_INIT);
-      Wait_Until(Milliseconds(1));
-      LCD_Write_4x1Bits(DISP_INIT);
-      Wait_Until(Milliseconds(1));
-      LCD_Write_4x1Bits(DISP_4BITS);
-      Wait_Until(Milliseconds(1));
+      Wait_Until (Milliseconds (20));
+      LCD_Write_4x1Bits (DISP_INIT);
+      Wait_Until (Milliseconds (5));
+      LCD_Write_4x1Bits (DISP_INIT);
+      Wait_Until (Milliseconds (1));
+      LCD_Write_4x1Bits (DISP_INIT);
+      Wait_Until (Milliseconds (1));
+      LCD_Write_4x1Bits (DISP_4BITS);
+      Wait_Until (Milliseconds (1));
 
-      LCD_Cmd(DISP_CONFIG);
-      LCD_Cmd(DISP_OFF);
-      LCD_Cmd(DISP_CLR);
-      Wait_Until(Milliseconds(2));  -- undocumented but required!
-      LCD_Cmd(DISP_EMS);
-      LCD_Cmd(DISP_ON);
+      LCD_Cmd (DISP_CONFIG);
+      LCD_Cmd (DISP_OFF);
+      LCD_Cmd (DISP_CLR);
+      Wait_Until (Milliseconds (2));  -- undocumented but required!
+      LCD_Cmd (DISP_EMS);
+      LCD_Cmd (DISP_ON);
    end LCD_Init;
 
    ---------------
@@ -134,8 +134,8 @@ package body LCD is
 
    procedure LCD_Clear is
    begin
-      LCD_Cmd(DISP_CLR);
-      Wait_Until(Milliseconds(2));  -- undocumented but required!
+      LCD_Cmd (DISP_CLR);
+      Wait_Until (Milliseconds (2));  -- undocumented but required!
    end LCD_Clear;
 
    --------------
@@ -153,7 +153,7 @@ package body LCD is
          when others => Base := DD_RAM_ADDR;
       end case;
 
-      LCD_Cmd(Base + X + 16#80#);  -- addr command
+      LCD_Cmd (Base + X + 16#80#);  -- addr command
    end LCD_Goto;
 
    ------------------
@@ -163,7 +163,7 @@ package body LCD is
    procedure LCD_Put_Char (C : Character) is
    begin
       LCD_RS.Set;
-      LCD_Write_4x2Bits(C);
+      LCD_Write_4x2Bits (C);
    end LCD_Put_Char;
 
    --------------------
@@ -173,7 +173,7 @@ package body LCD is
    procedure LCD_Put_String (S : String) is
    begin
       for i in S'Range loop
-         LCD_Put_Char(S(i));
+         LCD_Put_Char (S (i));
       end loop;
    end LCD_Put_String;
 
@@ -183,8 +183,8 @@ package body LCD is
 
    procedure LCD_Put_String (X : Byte; Y : Byte; S : String) is
    begin
-      LCD_Goto(X, Y);
-      LCD_Put_String(S);
+      LCD_Goto (X, Y);
+      LCD_Put_String (S);
    end LCD_Put_String;
 
    ----------------
@@ -198,9 +198,9 @@ package body LCD is
    begin
       LCD_Clear;
       for y in 0 .. 1 loop
-         LCD_Goto (0, byte(y));
+         LCD_Goto (0, Byte (y));
          for x in Hexa_Char'Range loop
-            LCD_Put_Char (Hexa_Char(x));
+            LCD_Put_Char (Hexa_Char (x));
          end loop;
       end loop;
    end Print_Hexa;

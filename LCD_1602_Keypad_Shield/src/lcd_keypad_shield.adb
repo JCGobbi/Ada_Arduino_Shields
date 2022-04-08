@@ -24,7 +24,7 @@ package body LCD_Keypad_Shield is
                                   (1 => (Channel => Keypad_Channel, Sample_Time => Sample_144_Cycles));
 
    begin
-      -- Configure analog input
+      --  Configure analog input
       Enable_Clock (Keypad_Point);
       Configure_IO (Keypad_Point, (Mode => Mode_Analog, Resistors => Floating));
 

@@ -1,6 +1,6 @@
 with HAL;          use HAL;
 
-Package KeyPad is
+package Keypad is
 
    type Voltage is new Natural;
    Volts : Voltage := 0;
@@ -10,8 +10,8 @@ Package KeyPad is
    X_Pos : Integer := 0;
    Y_Pos : Integer := 0;
 
-   function Positive (A : UInt32) return Uint32;
-   Procedure Keypad_ADC_Update;
-   Procedure Keypad_ADC_Sel;
+   function Positive (A : UInt32) return UInt32;
+   procedure Keypad_ADC_Update;
+   procedure Keypad_ADC_Sel;
 
-end KeyPad;
+end Keypad;

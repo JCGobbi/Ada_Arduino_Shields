@@ -1,3 +1,4 @@
+with Ada.Real_Time;       use Ada.Real_Time;
 with Ada.Unchecked_Conversion;
 with Interfaces;
 
@@ -15,19 +16,20 @@ package Seven_Seg is
      new Ada.Unchecked_Conversion (Source => Byte,
                                    Target => Bits_8);
 
-   -- The 7-segment refresh of four digits maintains the last digit bright
-   -- between each refresh, so with five counts the last one is out of display
-   -- and the bright of the four digits is equal.
+   --  The 7-segment refresh of four digits maintains the last digit bright
+   --  between each refresh, so with five counts the last one is out of display
+   --  and the bright of the four digits is equal.
    type DIGIT is mod 5;               -- four digits + one no-digit
 
    Blank : constant := 10;            -- next one after digit 9
-   type SEG_INDEX is range 0..Blank;  -- digits 0..9 and Blank
+   type SEG_INDEX is range 0 .. Blank;  -- digits 0..9 and Blank
    for SEG_INDEX'Size use 8;          -- represent as a byte
 
-   type UPDATE_RATE is range 1..100;  -- display updates/sec
+   type UPDATE_RATE is range 1 .. 100;  -- display updates/sec
    Per_Sec   : UPDATE_RATE := 100;
    type DISP_VAL is mod 10_000;       -- all >0 values that fit into 4 digits
 
+   procedure Wait_Until (S : Time_Span);
    procedure Set_Value (Value : DISP_VAL; Blank_LZ : Boolean);
    procedure SRCLK_Strobe;
    procedure RCLK_Strobe;

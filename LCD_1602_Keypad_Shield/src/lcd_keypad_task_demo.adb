@@ -9,10 +9,10 @@ begin
    loop
       Keypad_ADC_Update;
       Keypad_ADC_Sel;
-      LCD_Goto(0, 1);
-      LCD_Put_String(Key);
+      LCD_Goto (0, 1);
+      LCD_Put_String (Key);
       delay until Clock + Milliseconds (200); -- slow it down to ease reading
-      --null;
-      --delay until Ada.Real_Time.Time_Last;
+      --  null;
+      --  delay until Ada.Real_Time.Time_Last;
    end loop;
 end LCD_Keypad_Task_Demo;

@@ -34,8 +34,8 @@ procedure DC_Motor_Demo is
    --  motor's encoder.
 
    procedure Motor_Cycle (Driven_Motor : out Basic_Motor; Direction : Directions);
-   -- Cycle between forward and backward directions varying speed between
-   -- 0 and 100%.
+   --  Cycle between forward and backward directions varying speed between
+   --  0 and 100%.
 
    -----------
    -- Panic --
@@ -75,7 +75,7 @@ procedure DC_Motor_Demo is
       Stopping_Time : constant Time_Span := Milliseconds (50);  -- WAG
    begin
       This.Coast;
-      --This.Stop;
+      --  This.Stop;
       loop
          exit when Encoder_Delta (This, Sample_Interval => Stopping_Time) = 0;
       end loop;
@@ -103,11 +103,11 @@ procedure DC_Motor_Demo is
                when Stopped  => All_LEDs_Off;
                when Slow     => Blue_LED.Set;
                when Cruising => Green_LED.Set;
-               --when Fast     => Orange_LED.Set;
+               --  when Fast     => Orange_LED.Set;
                when Redline  => Red_LED.Set;
                when others   => Panic;
             end case;
-            delay until Clock + Milliseconds(1000);
+            delay until Clock + Milliseconds (1000);
          end loop;
          Dir_Motor := (if Dir_Motor = Forward then Backward else Forward);
          Throttle_Setting := 0;
@@ -120,11 +120,11 @@ begin
    All_LEDs_Off;
 
    Buzzer_Init_Bus;
-   for i in 1 ..3 loop
+   for i in 1 .. 3 loop
       Buzzer_Set (Buz_Point);
-      delay until Clock + Milliseconds(500);
+      delay until Clock + Milliseconds (500);
       Buzzer_Clear (Buz_Point);
-      delay until Clock + Milliseconds(500);
+      delay until Clock + Milliseconds (500);
    end loop;
 
    loop

@@ -2,13 +2,13 @@ with STM32.ADC;        use STM32.ADC;
 
 with LCD_Keypad_Shield; use LCD_Keypad_Shield;
 
-package body KeyPad is
+package body Keypad is
 
    --------------
    -- Positive --
    --------------
 
-   function Positive (A : UInt32) return Uint32 is
+   function Positive (A : UInt32) return UInt32 is
    begin
       if A > 0 then
          return A;
@@ -24,14 +24,14 @@ package body KeyPad is
    procedure Keypad_ADC_Update is
       Successful : Boolean;
    begin
-      -- Get Keypad voltage between 0 - 500 Volts, within 0 (minimum) to 4095 (maximum)
+      --  Get Keypad voltage between 0 - 500 Volts, within 0 (minimum) to 4095 (maximum)
       Start_Conversion (Keypad_ADC);
       Poll_For_Status (Keypad_ADC, Regular_Channel_Conversion_Complete, Successful);
 
       if not Successful then
          null;
       else
-         Volts := Voltage(Positive(UInt32(Conversion_Value (Keypad_ADC)) * 500 / 4095)); -- update voltage
+         Volts := Voltage (Positive (UInt32 (Conversion_Value (Keypad_ADC)) * 500 / 4095)); -- update voltage
       end if;
    end Keypad_ADC_Update;
 
@@ -40,14 +40,14 @@ package body KeyPad is
    --------------------
 
    procedure Keypad_ADC_Sel is
-      -- The five keys are selected by an analog voltage.
-      -- The exact voltages are given below with descending order:
-      -- 5 V   : No switch pressed
-      -- 3.62 V: Select switch
-      -- 2.47 V: Left switch
-      -- 1.61 V: Down switch
-      -- 0.71 V: Up switch
-      -- 0.0 V : Right switch
+      --  The five keys are selected by an analog voltage.
+      --  The exact voltages are given below with descending order:
+      --  5 V   : No switch pressed
+      --  3.62 V: Select switch
+      --  2.47 V: Left switch
+      --  1.61 V: Down switch
+      --  0.71 V: Up switch
+      --  0.0 V : Right switch
 
    begin
       case Volts is
@@ -84,4 +84,4 @@ package body KeyPad is
       end case;
    end Keypad_ADC_Sel;
 
-end KeyPad;
+end Keypad;

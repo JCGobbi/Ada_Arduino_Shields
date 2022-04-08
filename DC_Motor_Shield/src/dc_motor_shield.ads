@@ -1,24 +1,23 @@
--- The Fundumoto motor shield (Keyes)
+--  The Fundumoto motor shield (Keyes)
 --
--- Function                 Data Bit
+--  Function                 Data Bit
 --
--- Motor 1 PWM              D10
--- Motor 1 Direction        D12
--- Motor 2 PWM              D11
--- Motor 2 Direction        D13
--- Buzzer                   D4
--- Ping connector           +5 D8 D7 GND (+ R T G)
--- Servo connector          GND +5 D9 (G +5 9)
--- PIN 2 I/O connector      GND +5 D2 (G + S)
--- Digital connector        +5 D6 D5 GND D3 (+ B G - R)
--- BT2 connector            +5 GND D0 D1 (+ - T R) Bluetooth
--- Analog connectors        GND +5 A0-A5
+--  Motor 1 PWM              D10
+--  Motor 1 Direction        D12
+--  Motor 2 PWM              D11
+--  Motor 2 Direction        D13
+--  Buzzer                   D4
+--  Ping connector           +5 D8 D7 GND (+ R T G)
+--  Servo connector          GND +5 D9 (G +5 9)
+--  PIN 2 I/O connector      GND +5 D2 (G + S)
+--  Digital connector        +5 D6 D5 GND D3 (+ B G - R)
+--  BT2 connector            +5 GND D0 D1 (+ - T R) Bluetooth
+--  Analog connectors        GND +5 A0-A5
 
 with STM32;               use STM32;
 with STM32.Device;        use STM32.Device;
 with STM32.GPIO;          use STM32.GPIO;
 with STM32.Timers;        use STM32.Timers;
-with HAL;                 use HAL;
 
 with DC_Motor;            use DC_Motor;
 
@@ -69,24 +68,24 @@ package DC_Motor_Shield is
    ---------------------------
 
    Buz_Point : GPIO_Point renames PF14;
-   -- PF14 corresponds to D4 of Arduino connector CN10 from Nucleo_F429ZI
-   -- This pin corresponds to Buzzer from DC Motor Shield
+   --  PF14 corresponds to D4 of Arduino connector CN10 from Nucleo_F429ZI
+   --  This pin corresponds to Buzzer from DC Motor Shield
 
    procedure Buzzer_Init_Bus;
 
    procedure Buzzer_Set (This : in out GPIO_Point) renames STM32.GPIO.Set;
-   -- GPIO = 0 => buzzer OFF, GPIO = 1 => buzzer ON.
+   --  GPIO = 0 => buzzer OFF, GPIO = 1 => buzzer ON.
 
-   Procedure Buzzer_Clear (This : in out GPIO_Point) renames STM32.GPIO.Clear;
-   -- GPIO = 0 => buzzer OFF, GPIO = 1 => buzzer ON.
+   procedure Buzzer_Clear (This : in out GPIO_Point) renames STM32.GPIO.Clear;
+   --  GPIO = 0 => buzzer OFF, GPIO = 1 => buzzer ON.
 
-   Procedure Buzzer_Toggle (This : in out GPIO_Point) renames STM32.GPIO.Toggle;
+   procedure Buzzer_Toggle (This : in out GPIO_Point) renames STM32.GPIO.Toggle;
 
    ---------------------------------
    -- Nucleo Board Configurations --
    ---------------------------------
-   -- The procedures bellow are extracted from STM32.Board (STM32F429disco)
-   -- and addressed to the NUCLEOF429ZI LEDs.
+   --  The procedures bellow are extracted from STM32.Board (STM32F429disco)
+   --  and addressed to the NUCLEOF429ZI LEDs.
 
    Blue_LED  : GPIO_Point renames PB7;
    Green_LED : GPIO_Point renames PB0;

@@ -1,4 +1,3 @@
-with STM32.GPIO;        use STM32.GPIO;
 with Ada.Real_Time;     use Ada.Real_Time;
 
 with Four_Relay_Shield; use Four_Relay_Shield;
@@ -9,12 +8,12 @@ begin
 
    for I in 1 .. 3 loop
       for J in Relay_Points'Range loop
-         Relay_Set (Relay_Points(J));
-         delay until Clock + Milliseconds(1000);
-         Relay_Clear (Relay_Points(J));
-         delay until Clock + Milliseconds(1000);
+         Relay_Set (Relay_Points (J));
+         delay until Clock + Milliseconds (1000);
+         Relay_Clear (Relay_Points (J));
+         delay until Clock + Milliseconds (1000);
       end loop;
-      delay until Clock + Milliseconds(3000);
+      delay until Clock + Milliseconds (3000);
    end loop;
 
    loop

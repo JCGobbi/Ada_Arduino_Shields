@@ -25,21 +25,21 @@ package body Button is
             Clear_External_Interrupt (SW3_EXTI_Line);
          end if;
 
-         -- Debouncing. Key pressed => GPIO = 0; not pressed => GPIO = 1.
+         --  Debouncing. Key pressed => GPIO = 0; not pressed => GPIO = 1.
          if Now - Last_Time >= Debounce_Time then
 
             if not SW1.Set then
-               -- Put here your code for SW1 pressed
+               --  Put here your code for SW1 pressed
                X_Pressed := not X_Pressed; -- Toggle
             end if;
 
             if not SW2.Set then
-               -- Put here your code for SW2 pressed
+               --  Put here your code for SW2 pressed
                Y_Pressed := True;
             end if;
 
-            if not SW3.Set then --ok
-               -- Put here your code for SW3 pressed
+            if not SW3.Set then -- ok
+               --  Put here your code for SW3 pressed
                Z_Pressed := True;
             end if;
             Last_Time := Now;

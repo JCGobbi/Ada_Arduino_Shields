@@ -1,3 +1,5 @@
+with HAL; use HAL;
+
 package body DC_Motor_Shield is
 
    -----------------------------

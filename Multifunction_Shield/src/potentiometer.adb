@@ -7,7 +7,7 @@ package body Potentiometer is
    -- Positive --
    --------------
 
-   function Positive (Pos : UInt32) return Uint32 is
+   function Positive (Pos : UInt32) return UInt32 is
    begin
       if Pos > 0 then
          return Pos;
@@ -23,14 +23,14 @@ package body Potentiometer is
    procedure Pot_Update is
       Successful : Boolean;
    begin
-      -- Get potentiometer voltage in percent of the maximum: within 0 (minimum) to 4095 (maximum)
+      --  Get potentiometer voltage in percent of the maximum: within 0 (minimum) to 4095 (maximum)
       Start_Conversion (Pot_ADC);
       Poll_For_Status (Pot_ADC, Regular_Channel_Conversion_Complete, Successful);
 
       if not Successful then
          null;
       else
-         Volts := Voltage(Positive(UInt32(Conversion_Value (Pot_ADC)) * 100 / 4095)); -- update voltage
+         Volts := Voltage (Positive (UInt32 (Conversion_Value (Pot_ADC)) * 100 / 4095)); -- update voltage
       end if;
    end Pot_Update;
 
