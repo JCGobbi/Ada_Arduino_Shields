@@ -18,8 +18,8 @@ package DC_Motor_Task is
    --  motor's encoder.
 
    procedure Motor_Cycle (Driven_Motor : out Basic_Motor; Direction : Directions);
-   -- Cycle between forward and backward directions varying speed between
-   -- 0 and 100%.
+   --  Cycle between forward and backward directions varying speed between
+   --  0 and 100%.
 
    task DC_Motor_Controller;
 

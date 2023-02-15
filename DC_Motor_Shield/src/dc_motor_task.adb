@@ -1,5 +1,3 @@
-with STM32.Board;     use STM32.Board;
-
 with DC_Motor_Shield; use DC_Motor_Shield;
 
 package body DC_Motor_Task is
@@ -57,7 +55,7 @@ package body DC_Motor_Task is
       Stopping_Time : constant Time_Span := Milliseconds (50);  -- WAG
    begin
       This.Coast;
-      --This.Stop;
+      --  This.Stop;
       loop
          exit when Encoder_Delta (This, Sample_Interval => Stopping_Time) = 0;
       end loop;
@@ -83,13 +81,13 @@ package body DC_Motor_Task is
             --  note that the following function call delays for the Sample_Interval
             case Encoder_Delta (Driven_Motor, Sample_Interval => Encoder_Sampling_Interval) is
                when Stopped  => All_LEDs_Off;
-               --when Slow     => Blue_LED.Set;
+               --  when Slow     => Blue_LED.Set;
                when Cruising => Green_LED.Set;
-               --when Fast     => Orange_LED.Set;
+               --  when Fast     => Orange_LED.Set;
                when Redline  => Red_LED.Set;
                when others   => Panic;
             end case;
-            delay until Clock + Milliseconds(1000);
+            delay until Clock + Milliseconds (1000);
          end loop;
          Dir_Motor := (if Dir_Motor = Forward then Backward else Forward);
          Throttle_Setting := 0;
@@ -112,15 +110,15 @@ begin
    --  Initialization code for the DC_Motor_Task package.
    --  This will be executed before the tasks are run.
    Initialize_Motor_Shield (Steering_Motor, Engine_Motor);
-   STM32.Board.Initialize_LEDs;
-   STM32.Board.All_LEDs_Off;
+   Initialize_LEDs;
+   All_LEDs_Off;
 
    Buzzer_Init_Bus;
-   for i in 1 ..3 loop
+   for i in 1 .. 3 loop
       Buzzer_Set (Buz_Point);
-      delay until Clock + Milliseconds(500);
+      delay until Clock + Milliseconds (500);
       Buzzer_Clear (Buz_Point);
-      delay until Clock + Milliseconds(500);
+      delay until Clock + Milliseconds (500);
    end loop;
 
 end DC_Motor_Task;
