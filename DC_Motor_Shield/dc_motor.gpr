@@ -9,7 +9,7 @@ project DC_Motor is
 
    --  Executable files to choose:
    --  dc_motor_demo.adb, dc_motor_task_demo.adb
-   for Main use ("dc_motor_demo.adb", "dc_motor_task_demo.adb");
+   for Main use ("dc_motor_demo.adb");
 
    for Object_Dir use "obj";
    for Exec_Dir use "exec";

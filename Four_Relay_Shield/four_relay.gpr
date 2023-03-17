@@ -9,7 +9,7 @@ project Four_Relay is
 
    --  Executable files to choose:
    --  four_relay_demo.adb, four_relay_task_demo.adb
-   for Main use ("four_relay_demo.adb", "four_relay_task_demo.adb");
+   for Main use ("four_relay_demo.adb");
 
    for Object_Dir use "obj";
    for Exec_Dir use "exec";

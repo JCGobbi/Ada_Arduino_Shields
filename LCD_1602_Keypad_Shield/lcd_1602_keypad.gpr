@@ -9,7 +9,7 @@ project LCD_1602_Keypad is
 
    --  Executable files to choose:
    --  lcd_keypad_demo.adb, lcd_keypad_task_demo.adb
-   for Main use ("lcd_keypad_demo.adb", "lcd_keypad_task_demo.adb");
+   for Main use ("lcd_keypad_demo.adb");
 
    for Object_Dir use "obj";
    for Exec_Dir use "exec";
