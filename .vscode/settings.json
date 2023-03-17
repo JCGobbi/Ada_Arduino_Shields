@@ -1,9 +1,12 @@
-// Choose between the project files bellow and change variables projectFolder
-// and projectFile:
-// DC_Motor_Shield/dc_motor.gpr
-// Four_Relay_Shield/four_relay.gpr
-// LCD_1602_Keypad_Shield/lcd_1602_keypad.gpr
-// Multifunction_Shield/multifunction.gpr
+// Choose between the project files bellow and change variables projectFile,
+// projectFolder and binaryFile:
+//
+// projectFile                                 binaryFile
+//
+// DC_Motor_Shield/dc_motor.gpr                dc_motor, dc_motor_task
+// Four_Relay_Shield/four_relay.gpr            four_relay, four_relay_task
+// LCD_1602_Keypad_Shield/lcd_1602_keypad.gpr  lcd_keypad, lcd_keypad_task
+// Multifunction_Shield/multifunction.gpr      multifunction, multifunction_task
 
 {
     "editor.tabSize": 3,
@@ -11,8 +14,10 @@
     "editor.rulers": [80, 100],
     "editor.detectIndentation": false,
     "ada.defaultCharset": "UTF-8",
+    
+    "ada.projectFile": "Four_Relay_Shield/four_relay.gpr",
     "ada.scenarioVariables": {
-      "projectFolder": "DC_Motor_Shield",
-    },
-    "ada.projectFile": "DC_Motor_Shield/dc_motor.gpr"
+      "projectFolder": "Four_Relay_Shield",
+      "binaryFile": "four_relay"
+    }
 }

@@ -123,7 +123,7 @@
             "ap=0",
             "mode=UR",
             "--write",
-            "exec/*.elf",
+            "exec/${config:ada.scenarioVariables.binaryFile}.elf",
             "-rst"
          ],
          "options": {
@@ -143,8 +143,8 @@
             "-S",
             "-O",
             "ihex",
-            "exec/*.elf",
-            "exec/main.hex"
+            "exec/${config:ada.scenarioVariables.binaryFile}.elf",
+            "exec/${config:ada.scenarioVariables.binaryFile}.hex"
          ],
          "options": {
             "cwd": "${workspaceFolder}/${config:ada.scenarioVariables.projectFolder}"
@@ -167,7 +167,7 @@
             "--format",
             "ihex",
             "write",
-            "exec/main.hex"
+            "exec/${config:ada.scenarioVariables.binaryFile}.hex"
          ],
          "options": {
             "cwd": "${workspaceFolder}/${config:ada.scenarioVariables.projectFolder}"
@@ -191,7 +191,7 @@
             "ap=0",
             "mode=UR",
             "--write",
-            "exec/main.hex",
+            "exec/${config:ada.scenarioVariables.binaryFile}.hex",
             "-rst"
          ],
          "options": {
@@ -211,8 +211,8 @@
             "-S",
             "-O",
             "binary",
-            "exec/*.elf",
-            "exec/main.bin"
+            "exec/${config:ada.scenarioVariables.binaryFile}.elf",
+            "exec/${config:ada.scenarioVariables.binaryFile}.bin"
          ],
          "options": {
             "cwd": "${workspaceFolder}/${config:ada.scenarioVariables.projectFolder}"
@@ -235,7 +235,7 @@
             "--format",
             "binary",
             "write",
-            "exec/main.bin",
+            "exec/${config:ada.scenarioVariables.binaryFile}.bin",
             "0x08000000"
          ],
          "options": {
@@ -260,7 +260,7 @@
             "ap=0",
             "mode=UR",
             "--write",
-            "exec/main.bin",
+            "exec/${config:ada.scenarioVariables.binaryFile}.bin",
             "0x08000000",
             "-rst"
          ],
