@@ -1,0 +1,18 @@
+// Choose between the project files bellow and change variables projectFolder
+// and projectFile:
+// DC_Motor_Shield/dc_motor.gpr
+// Four_Relay_Shield/four_relay.gpr
+// LCD_1602_Keypad_Shield/lcd_1602_keypad.gpr
+// Multifunction_Shield/multifunction.gpr
+
+{
+    "editor.tabSize": 3,
+    "editor.insertSpaces": true,
+    "editor.rulers": [80, 100],
+    "editor.detectIndentation": false,
+    "ada.defaultCharset": "UTF-8",
+    "ada.scenarioVariables": {
+      "projectFolder": "DC_Motor_Shield",
+    },
+    "ada.projectFile": "DC_Motor_Shield/dc_motor.gpr"
+}
