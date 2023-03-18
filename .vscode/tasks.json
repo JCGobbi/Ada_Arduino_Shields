@@ -115,7 +115,7 @@
       {
          "label": "Ada: flash elf file to board with STM32CubeProgrammer",
          "type": "shell",
-         "command": "/opt/STMicroelectronics/STM32CubeProgrammer/bin/STM32_Programmer_CLI",
+         "command": "${config:ada.scenarioVariables.STM32ProgFolder}STM32_Programmer_CLI",
          "args": [
             "--connect",
             "port=SWD",
@@ -183,7 +183,7 @@
          "dependsOrder": "sequence",
          "dependsOn": ["Ada: convert elf file to hex file"],
          "type": "shell",
-         "command": "/opt/STMicroelectronics/STM32CubeProgrammer/bin/STM32_Programmer_CLI",
+         "command": "${config:ada.scenarioVariables.STM32ProgFolder}STM32_Programmer_CLI",
          "args": [
             "--connect",
             "port=SWD",
@@ -252,7 +252,7 @@
          "dependsOrder": "sequence",
          "dependsOn": ["Ada: convert elf file to hex file"],
          "type": "shell",
-         "command": "/opt/STMicroelectronics/STM32CubeProgrammer/bin/STM32_Programmer_CLI",
+         "command": "${config:ada.scenarioVariables.STM32ProgFolder}STM32_Programmer_CLI",
          "args": [
             "--connect",
             "port=SWD",

@@ -1,5 +1,5 @@
 // Choose between the project files bellow and change variables projectFile,
-// projectFolder and binaryFile:
+// projectFolder and binaryFile according to your actual project file:
 //
 // projectFile                                 binaryFile
 //
@@ -18,6 +18,8 @@
     "ada.projectFile": "Four_Relay_Shield/four_relay.gpr",
     "ada.scenarioVariables": {
       "projectFolder": "Four_Relay_Shield",
-      "binaryFile": "four_relay"
+      "binaryFile": "four_relay",
+      "STM32ProgFolder": "/opt/STMicroelectronics/STM32CubeProgrammer/bin/"
+      // Leave empty if STM32CubeProgrammer is in your PATH
     }
 }
