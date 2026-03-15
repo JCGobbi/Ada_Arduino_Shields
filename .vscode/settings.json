@@ -20,7 +20,7 @@
       "PATH": "/opt/GNAT/gnat-arm-elf/bin:/opt/GNAT/x86_64/bin:/opt/GNAT/gnatprove/bin:${env:PATH}",
       "GPR_PROJECT_PATH": "",
       // Leave empty if STM32CubeProgrammer is in your PATH
-      "STM32ProgFolder": "/opt/STMicroelectronics/STM32CubeProgrammer/bin/"
+      "STM32ProgFolder": "/opt/STMicroelectronics/STM32CubeProgrammer/bin"
     },
 
     "ada.defaultCharset": "UTF-8",
